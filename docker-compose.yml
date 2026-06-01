@@ -1,0 +1,38 @@
+services:
+  web:
+    build: .
+    container_name: web
+    ports:
+      - "8888:80"
+    environment:
+      - DB_HOST=bbdd
+    volumes:
+      - type: bind
+        source: "."
+        target: /var/www/html
+    depends_on:
+      - bbdd
+    networks:
+      - ejemplored
+
+  bbdd:
+    image: mariadb
+    container_name: bbdd
+    environment:
+      MYSQL_ROOT_PASSWORD: Ciclo2gs
+      MYSQL_DATABASE: restaurante_western
+    ports:
+      - "3307:3306"
+    volumes:
+      - data:/var/lib/mysql
+      - ./restaurante_western.sql:/docker-entrypoint-initdb.d/bbdd.sql
+    networks:
+      - ejemplored
+
+volumes:
+  data:
+    driver: local
+
+networks:
+  ejemplored:
+    driver: bridge

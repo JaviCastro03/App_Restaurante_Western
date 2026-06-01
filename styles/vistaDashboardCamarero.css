@@ -1,0 +1,110 @@
+.pedido-card {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px var(--space-md); border-radius: var(--radius-sm);
+    background: var(--bg-surface); border: 1px solid var(--border);
+    transition: all var(--transition-fast);
+}
+.pedido-card:hover { border-color: var(--border-bright); }
+.item-qty-control {
+    display: flex; align-items: center; gap: 8px;
+}
+.qty-btn {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg-card);
+    color: var(--text-primary); cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition-fast);
+}
+.qty-btn:hover { border-color: var(--gold); color: var(--gold); }
+.categoria-btn {
+    padding: 6px 14px; border-radius: var(--radius-sm);
+    font-family: var(--font-heading); font-size: .7rem; letter-spacing: 1.5px;
+    text-transform: uppercase; border: 1px solid var(--border);
+    background: transparent; color: var(--text-muted); cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.categoria-btn.active, .categoria-btn:hover {
+    border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.06);
+}
+/* ── TABLET (768px – 1024px) ─────────────────────────────── */
+@media (max-width: 1024px) {
+    /* Servicio activo: menú + pedido en columna */
+    div[style*="grid-template-columns:1fr 380px"] {
+        grid-template-columns: 1fr !important;
+    }
+    /* Pedido sticky deja de serlo */
+    .card-gold[style*="position:sticky"] {
+        position: relative !important;
+        top: auto !important;
+    }
+    #itemsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+    }
+}
+
+/* ── MÓVIL (< 768px) ─────────────────────────────────────── */
+@media (max-width: 767px) {
+    .dashboard-main { padding: var(--space-md) !important; }
+
+    /* Header servicios */
+    div[style*="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-xl)"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: var(--space-sm) !important;
+    }
+
+    /* Grid servicios 1 columna */
+    div[style*="grid-template-columns:repeat(auto-fill,minmax(300px"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Servicio activo */
+    div[style*="grid-template-columns:1fr 380px"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Botones categoría más pequeños */
+    .categoria-btn { padding: 4px 10px; font-size: .65rem; }
+
+    /* Items grid más pequeño */
+    #itemsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+    }
+
+    /* Mesas grid */
+    .mesas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
+    }
+
+    /* Reservas grid */
+    div[style*="grid-template-columns:repeat(auto-fill,minmax(320px"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Botones cerrar servicio */
+    div[style*="display:flex;gap:10px"] {
+        flex-wrap: wrap !important;
+    }
+    div[style*="display:flex;gap:10px"] a,
+    div[style*="display:flex;gap:10px"] button {
+        flex: 1 !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    /* Modal más ancho en móvil */
+    .modal { margin: var(--space-md) !important; max-width: calc(100% - 32px) !important; }
+
+    /* Form row en modal a 1 columna */
+    .modal .form-row { grid-template-columns: 1fr !important; }
+}
+
+/* ── MÓVIL PEQUEÑO (< 400px) ─────────────────────────────── */
+@media (max-width: 400px) {
+    #itemsGrid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .mesas-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}

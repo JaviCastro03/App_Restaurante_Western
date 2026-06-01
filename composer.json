@@ -1,0 +1,23 @@
+{
+  "name": "elultimocorral/restaurante-western",
+  "description": "Sistema de Gestión para Restaurante El Último Corral",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.0",
+    "phpmailer/phpmailer": "^6.9",
+    "google/apiclient": "^2.15",
+    "tecnickcom/tcpdf": "^6.6"
+  },
+  "config": {
+    "vendor-dir": "models/vendor",
+    "audit": {
+      "abandoned": "ignore"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "models/"
+    }
+  }
+}

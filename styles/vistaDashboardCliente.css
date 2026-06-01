@@ -1,0 +1,121 @@
+.reserva-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    transition: all var(--transition-med);
+    position: relative;
+    overflow: hidden;
+}
+.reserva-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 0;
+}
+.reserva-card.pendiente::before   { background: var(--gold); }
+.reserva-card.confirmada::before  { background: #4caf50; }
+.reserva-card.cancelada::before   { background: #ef5350; }
+.reserva-card.completada::before  { background: #64b5f6; }
+.reserva-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+}
+.profile-avatar-large {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    background: var(--bg-surface);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    margin: 0 auto var(--space-lg);
+    box-shadow: 0 0 30px rgba(201,168,76,.2);
+}
+.timeline-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 6px;
+    box-shadow: 0 0 8px rgba(201,168,76,.4);
+}
+/* ── TABLET (768px – 1024px) ─────────────────────────────── */
+@media (max-width: 1024px) {
+    /* Nueva reserva: form + sidebar en columna */
+    div[style*="grid-template-columns:1fr 380px"] {
+        grid-template-columns: 1fr !important;
+    }
+    div[style*="position:sticky;top:84px"] {
+        position: relative !important;
+        top: auto !important;
+    }
+    /* Mi perfil: tarjeta + form en columna */
+    div[style*="grid-template-columns:300px 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ── MÓVIL (< 768px) ─────────────────────────────────────── */
+@media (max-width: 767px) {
+    .dashboard-main { padding: var(--space-md) !important; }
+
+    /* Header mis reservas */
+    div[style*="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-xl)"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: var(--space-sm) !important;
+    }
+    div[style*="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-xl)"] a.btn-western {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* Reserva card */
+    .reserva-card { padding: var(--space-md); }
+    .reserva-card > div:first-child {
+        flex-direction: column !important;
+    }
+    div[style*="min-width:160px"] {
+        min-width: 100% !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+    }
+    div[style*="min-width:160px"] button,
+    div[style*="min-width:160px"] form { flex: 1 !important; }
+
+    /* Nueva reserva */
+    div[style*="grid-template-columns:1fr 380px"] {
+        grid-template-columns: 1fr !important;
+    }
+    .form-row { grid-template-columns: 1fr !important; }
+
+    /* Mesas grid */
+    #mesaGrid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important;
+    }
+
+    /* Mi perfil */
+    div[style*="grid-template-columns:300px 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+    .profile-avatar-large { width: 80px; height: 80px; font-size: 2.2rem; }
+
+    /* Modal */
+    .modal { margin: var(--space-md) !important; max-width: calc(100% - 32px) !important; }
+    .modal .form-row { grid-template-columns: 1fr !important; }
+
+    /* Botón reservar */
+    button[name="hacer_reserva"] { font-size: .85rem !important; padding: 14px !important; }
+}
+
+/* ── MÓVIL PEQUEÑO (< 400px) ─────────────────────────────── */
+@media (max-width: 400px) {
+    #mesaGrid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .reserva-card div[style*="grid-template-columns:repeat(auto-fit"] {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}

@@ -1,0 +1,95 @@
+/* ── TABLET (768px – 1024px) ─────────────────────────────── */
+@media (max-width: 1024px) {
+    .dashboard-main { padding: var(--space-lg) !important; }
+
+    /* Resumen: grid 2 columnas */
+    div[style*="grid-template-columns:1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Horario: grid 2 columnas */
+    div[style*="grid-template-columns:1fr 1fr;gap:var(--space-xl)"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Estadísticas: chart + top platos */
+    div[style*="grid-template-columns:2fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Mesas grid más pequeño */
+    .mesas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+    }
+}
+
+/* ── MÓVIL (< 768px) ─────────────────────────────────────── */
+@media (max-width: 767px) {
+    .dashboard-main { padding: var(--space-md) !important; }
+
+    /* Stats grid 2 columnas en móvil */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .stat-value { font-size: 1.6rem !important; }
+
+    /* Headers con botón */
+    div[style*="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-xl)"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: var(--space-sm) !important;
+    }
+    div[style*="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-xl)"] button.btn-western {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* Mesas grid */
+    .mesas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+    }
+
+    /* Turnos grid */
+    div[style*="grid-template-columns:repeat(auto-fill,minmax(300px"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Tabla usuarios scroll horizontal */
+    .table-western { font-size: .75rem !important; }
+    .table-western thead th,
+    .table-western tbody td { padding: 8px !important; }
+
+    /* Reservas filtro */
+    div[style*="display:flex;align-items:flex-start;justify-content:space-between"] {
+        flex-direction: column !important;
+    }
+    div[style*="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap"] {
+        width: 100% !important;
+    }
+    div[style*="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap"] input {
+        width: 100% !important;
+    }
+
+    /* Horario */
+    div[style*="grid-template-columns:1fr 1fr;gap:var(--space-xl)"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Estadísticas */
+    div[style*="grid-template-columns:2fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Modal */
+    .modal { margin: var(--space-md) !important; max-width: calc(100% - 32px) !important; }
+    .modal .form-row { grid-template-columns: 1fr !important; }
+}
+
+/* ── MÓVIL PEQUEÑO (< 400px) ─────────────────────────────── */
+@media (max-width: 400px) {
+    .stats-grid { grid-template-columns: 1fr !important; }
+    .stat-value { font-size: 1.4rem !important; }
+    .mesas-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
